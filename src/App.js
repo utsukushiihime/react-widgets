@@ -19,9 +19,11 @@ const items = [
 
 const App = () => {
 	return (
-		<div>
-			<Accordion items={items} />
-		</div>
+		<main>
+			<div className="container">
+				<Accordion items={items} />
+			</div>
+		</main>
 	);
 };
 
