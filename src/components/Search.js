@@ -20,15 +20,19 @@ const Search = () => {
     };
 
     // Run the search when the term changes
-    if (term) {
-      search();
-    }
+    const timeoutId = setTimeout(() => {
+      if (term) {
+        search();
+      }
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [term]);
 
-  console.log(results);
-
   // return results
-  const renderedResults = results.map((result, pageid) => {
+  const renderedResults = results.map((result) => {
     return (
       <div key={result.pageid} className="card my-3">
         <div className="card-header">
