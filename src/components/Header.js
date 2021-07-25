@@ -1,21 +1,34 @@
 import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import Link from './Link';
 
 const Header = () => {
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">React Widgets</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/list">List</Nav.Link>
-            <Nav.Link href="/dropdown">Drop Down</Nav.Link>
-            <Nav.Link href="/translate">Translate</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link href="/" className="nav-link">
+              Accordion
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link href="/list" className="nav-link">
+              List
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link href="/dropdown" className="nav-link">
+              Dropdown
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link href="/translate" className="nav-link">
+              Translate
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 

@@ -25,7 +25,7 @@ const Convert = ({ text, language }) => {
           params: {
             q: debouncedText,
             target: language.value,
-            key: apiKey,
+            key: apiKey, // GOOGLE TRANSLATION API KEY
           },
         }
       );
