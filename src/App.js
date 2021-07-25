@@ -1,23 +1,6 @@
-import React, { useState } from 'react';
-// import Accordion from './components/Accordion';
-// import Search from './components/Search';
-import Dropdown from './components/Dropdown';
+import React from 'react';
+import Translate from './components/Translate';
 import './App.scss';
-
-// const items = [
-//   {
-//     title: 'Accordion Item 1',
-//     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-//   },
-//   {
-//     title: 'Accordion Item 2',
-//     content: 'Lorem ipsum dolor sit amet, this is some more content.',
-//   },
-//   {
-//     title: 'Accordion Item 3',
-//     content: 'Lorem ipsum dolor sit amet, this is some more content.',
-//   },
-// ];
 
 const options = [
   {
@@ -35,27 +18,14 @@ const options = [
 ];
 
 const App = () => {
-  const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
   return (
     <main>
-      <div className="container mt-5">
-        <button
-          className="btn btn-dark"
-          onClick={() => setShowDropdown(!showDropdown)}
-        >
-          Toggle Dropdown
-        </button>
-
-        {showDropdown ? (
-          <Dropdown
-            selected={selected}
-            onSelectedChange={setSelected}
-            options={options}
-          />
-        ) : null}
-        {/* <Search /> */}
-        {/* <Accordion items={items} /> */}
+      <div className="container-md mt-5">
+        <div className="position-relative">
+          <div className="position-absolute top-0 start-50 translate-middle-x">
+            <Translate />
+          </div>
+        </div>
       </div>
     </main>
   );

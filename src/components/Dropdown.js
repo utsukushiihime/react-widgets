@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ label, options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
 
@@ -38,10 +38,11 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 
   return (
     <div className="dropdown">
+      <div className="dropdown-label">{label}</div>
       <button
         ref={ref}
         onClick={() => setOpen(!open)}
-        className={`btn btn-secondary dropdown-toggle ${open ? 'show' : ''}`}
+        className={`btn btn-dark dropdown-toggle ${open ? 'show' : ''}`}
       >
         {selected.label}
       </button>
