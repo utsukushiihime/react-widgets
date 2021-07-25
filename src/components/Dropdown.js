@@ -1,34 +1,56 @@
-import React from 'react';
-import { Dropdown } from 'react-bootstrap';
+import React, { useState, useEffect, useRef } from 'react';
 
-const DropdownUI = ({ options, selected, onSelectedChange }) => {
-  const renderedOptions = options.map((option, index) => {
+const Dropdown = ({ options, selected, onSelectedChange }) => {
+  const [open, setOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    const onBodyClick = (event) => {
+      if (ref.current.contains(event.target)) {
+        return;
+      }
+      setOpen(false);
+    };
+    document.body.addEventListener('click', onBodyClick, { capture: true });
+
+    return () => {
+      document.body.removeEventListener('click', onBodyClick, {
+        capture: true,
+      });
+    };
+  }, []);
+
+  const renderedOptions = options.map((option) => {
     if (option.value === selected.value) {
       return null;
     }
 
     return (
-      <Dropdown.Item
+      <li
         key={option.value}
         className="dropdown-item"
         onClick={() => onSelectedChange(option)}
       >
         {option.label}
-      </Dropdown.Item>
+      </li>
     );
   });
 
   return (
-    <>
-      <Dropdown>
-        <Dropdown.Toggle variant="dark" id="dropdown-basic">
-          {selected.label}
-        </Dropdown.Toggle>
+    <div className="dropdown">
+      <button
+        ref={ref}
+        onClick={() => setOpen(!open)}
+        className={`btn btn-secondary dropdown-toggle ${open ? 'show' : ''}`}
+      >
+        {selected.label}
+      </button>
 
-        <Dropdown.Menu>{renderedOptions}</Dropdown.Menu>
-      </Dropdown>
-    </>
+      <ul className={`dropdown-menu ${open ? 'show' : ''}`}>
+        {renderedOptions}
+      </ul>
+    </div>
   );
 };
 
-export default DropdownUI;
+export default Dropdown;
