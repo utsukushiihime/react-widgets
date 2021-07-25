@@ -11,10 +11,10 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       }
       setOpen(false);
     };
-    document.body.addEventListener('click', onBodyClick, { capture: true });
+    document.addEventListener('click', onBodyClick, { capture: true });
 
     return () => {
-      document.body.removeEventListener('click', onBodyClick, {
+      document.removeEventListener('click', onBodyClick, {
         capture: true,
       });
     };
